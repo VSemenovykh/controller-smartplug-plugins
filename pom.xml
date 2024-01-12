@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <groupId>com.netcracker.cloud.trainings</groupId>
+    <artifactId>controller-vlse0621-smartplug-plugins</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <packaging>spar</packaging>
+
+    <properties>
+        <nc.libs.smartplug.version>0.9.0</nc.libs.smartplug.version>
+        <nc.spar.plugin.version>0.8.6</nc.spar.plugin.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>release</id>
+            <name>libs-release</name>
+            <url>https://artifactorycn.netcracker.com/cdc.trn-release.mvn.group</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>https://artifactorycn.netcracker.com/cdc.trn.mvn.group</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>release</id>
+            <name>plugins-release</name>
+            <url>https://artifactorycn.netcracker.com/pd.saas.mvn</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.netcracker.smartplug</groupId>
+            <artifactId>smartplug-annotations</artifactId>
+            <version>${nc.libs.smartplug.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.netcracker.cloud.trainings</groupId>
+            <artifactId>provider-vlse0621-extension-points</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>com.netcracker.smartplug</groupId>
+                <artifactId>spar-maven-plugin</artifactId>
+                <version>${nc.spar.plugin.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

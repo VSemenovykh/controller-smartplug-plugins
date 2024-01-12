@@ -1,0 +1,21 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  {{- if .Values.DEPLOYMENT_RESOURCE_NAME }}
+  name: {{ .Values.DEPLOYMENT_RESOURCE_NAME }}
+    {{- else }}
+  name: {{ .Values.SERVICE_NAME }}
+    {{- end }}
+  labels:
+    config-type: smartplug
+data:
+  {{- $servicename := .Values.SERVICE_NAME -}}
+    {{- range $key, $val := .Values.global.deployDescriptor }}
+    {{- if eq $key $servicename }}
+    group: {{ $val.artifact.groupId }}
+    artifact: {{ $val.artifact.artifactId }}
+    version: {{ $val.artifact.version }}
+      {{- end }}
+      {{- end }}
+    tenants: {{ .Values.DEFAULT_PLUGIN_TENANTS }}

@@ -1,0 +1,3 @@
+SERVICE: "controller-vlse0621-smartplug-plugins"
+DEPLOYMENT_VERSION: "v1"  # TO_BE_REPLACED
+DEFAULT_PLUGIN_TENANTS: "vlse0621-tenant"
